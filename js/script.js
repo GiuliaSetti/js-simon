@@ -40,6 +40,8 @@
 // memorizzo il pulsante
 const playButton = document.getElementById("play");
 
+const reloadButton = document.getElementById("reload");
+
 // memorizzo l'elemento HTML dove stamperò i numeri random
 const toGuess = document.getElementById("random_numbers");
 
@@ -51,12 +53,18 @@ const randomCpu = createArray(maxNum, 1, 100);
 console.log(randomCpu);
 
 // memorizzo l'elemento HTML che contiene i numeri random
-const toGuessContainer = document.getElementById("random_numbers_container")
+const toGuessContainer = document.getElementById("random_numbers_container");
+
+
+reloadButton.style.display = "none";
 
 
 
 
 playButton.addEventListener("click", function(){
+    
+    playButton.style.display = "none";
+    
     // stampo in pagina i numeri
     toGuess.innerText = randomCpu;
 
@@ -99,26 +107,38 @@ playButton.addEventListener("click", function(){
         // se la lunghezza dell'array dell'utente è maggiore di 0 e quindi ne ha azzeccato almento 1
         if (wroteNumbers.length > 0){
           resultEL.innerHTML = "Hai indovinato " + (wroteNumbers.length) + " numeri. Questi numeri sono " + (wroteNumbers) +". I numeri originali erano " + (randomCpu);
+
+          
+         reloadButton.style.display = "block";
+
+
+          
     
         }  else {
     
             resultEL.innerHTML = "Niente, non hai memoria."
+
+            
+            reloadButton.style.display = "block";
+
+
+
     
      
         }
     
-    
-        
-    
-    
-    
-    
-    
-    
+  
     }
 
 
 });
+
+reloadButton.addEventListener("click", function(){
+    document.location.reload();
+});
+
+
+
 
 
 
