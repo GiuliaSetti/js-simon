@@ -10,7 +10,9 @@
 - genero una funzione che mi crei un array di totale 5 numeri casuali dalla funzione precedente
 
 - memorizzo un elemento HTML che mostri in pagina i numeri
+
 - memorizzo un elemento HTML che contenga l'array di numeri casuali che sparisca dopo 5 secondi.
+
 - memorizzo una variabile countdown di 5000 millisecondi, con funzione hide
 
 - genero una funzione hide che nasconda l'elemento container 
@@ -44,6 +46,28 @@ const maxNum = 5;
 const randomCpu = createArray(maxNum, 1, 100);
 
 console.log(randomCpu);
+
+// memorizzo l'elemento HTML che contiene i numeri random
+const toGuessContainer = document.getElementById("random_numbers_container")
+
+// stampo in pagina i numeri
+toGuess.innerText = randomCpu;
+
+// creo una variabile countdown
+
+const countdown = setInterval(hide, 5000);
+
+
+// genero una funzione che mi nasconda il container dei numeri random
+
+function hide(){
+    toGuessContainer.style.display ="none";
+}
+
+
+
+
+
 
 
 
