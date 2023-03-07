@@ -36,14 +36,14 @@
 // console.log("prova sa sa");
 
 // memorizzo l'elemento HTML dove stamperò i numeri random
-const toGuessNumbers = document.getElementById("random_numbers");
+const toGuess = document.getElementById("random_numbers");
+
+const maxNum = 5; 
 
 // memorizzo l'array
+const randomCpu = createArray(maxNum, 1, 100);
 
-const randomNumbersArray = createArray(5);
-
-console.log(randomNumbersArray);
-
+console.log(randomCpu);
 
 
 
@@ -63,35 +63,42 @@ console.log(randomNumbersArray);
 
 
 
+// ottimizzo in un'unica funzione
 
 
+/**
+ * 
+ * @param {var} total 
+ * @param {number} min 
+ * @param {number} max 
+ * @returns {Array[Numbers]}
+ */
 
-// genero una funzione di numeri casuali
-function randomNumbersBetween (min, max){
 
-    let random = Math.floor(Math.random() * (max - min + 1)) + min;
+function createArray(total, min, max) {
     
-    return random
-}
+    const array = [];
 
-// genero la funzione che mi crea l'array
+    while(array.length < total){
 
+        let newNum =  Math.floor(Math.random() * (max - min + 1)) + min;
 
-function createArray(total) {
-    const randomNumbers = [];
-
-     while(randomNumbers.length < total){
-
-        let newNum = randomNumbersBetween(1, 100);
-
-        if(!randomNumbers.includes(newNum)){
-            randomNumbers.push(newNum);
+        if(!array.includes(newNum)){
+            array.push(newNum);
         }
 
     }
-    return randomNumbers
+
+    return array
     
+
 }
+
+
+
+
+
+
 
 
 
