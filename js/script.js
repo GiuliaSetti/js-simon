@@ -37,6 +37,9 @@
 
 // console.log("prova sa sa");
 
+// memorizzo il pulsante
+const playButton = document.getElementById("play");
+
 // memorizzo l'elemento HTML dove stamperò i numeri random
 const toGuess = document.getElementById("random_numbers");
 
@@ -50,63 +53,72 @@ console.log(randomCpu);
 // memorizzo l'elemento HTML che contiene i numeri random
 const toGuessContainer = document.getElementById("random_numbers_container")
 
-// stampo in pagina i numeri
-toGuess.innerText = randomCpu;
-
-// creo una variabile countdown
-const countdown = setInterval(hide, 5000);
-
-// memorizzo una variabile per il risultato
-let resultEL = document.getElementById("result");
 
 
-// genero una funzione che mi nasconda il container dei numeri random
-function hide(){
-    toGuessContainer.style.display ="none";
-}
 
-// creo un timer che avvii la possibilità di far scrivere all'utente i numeri
-
-const promptDisplay = setTimeout(userTurn, 6000);
-
-function userTurn(){
-
-    const wroteNumbers = [];
-
-    for(let i = 1; i <= 5; i++){
-
-        // genero il prompr dove l'utente scrive i numeri in progressione
-        const singleNumber = Number(prompt("Inserisci il " + [i] + "° numero"));
+playButton.addEventListener("click", function(){
+    // stampo in pagina i numeri
+    toGuess.innerText = randomCpu;
 
 
-        // se il numero scritto è presente nell'array dei random E non è incluso nell'array dei numeri utente
-
-        if(randomCpu.includes(singleNumber) && !wroteNumbers.includes(singleNumber)){
-            wroteNumbers.push(singleNumber);
+    // creo una variabile countdown
+    const countdown = setInterval(hide, 5000);
+    
+    
+    // memorizzo una variabile per il risultato
+    let resultEL = document.getElementById("result");
+    
+    
+    // genero una funzione che mi nasconda il container dei numeri random
+    function hide(){
+        toGuessContainer.style.display ="none";
+    }
+    
+    // creo un timer che avvii la possibilità di far scrivere all'utente i numeri
+    
+    const promptDisplay = setTimeout(userTurn, 6000);
+    
+    function userTurn(){
+    
+        const wroteNumbers = [];
+    
+        for(let i = 1; i <= 5; i++){
+    
+            // genero il prompr dove l'utente scrive i numeri in progressione
+            const singleNumber = Number(prompt("Inserisci il " + [i] + "° numero"));
+    
+    
+            // se il numero scritto è presente nell'array dei random E non è incluso nell'array dei numeri utente
+    
+            if(randomCpu.includes(singleNumber) && !wroteNumbers.includes(singleNumber)){
+                wroteNumbers.push(singleNumber);
+            }
+    
+        };
+       
+        // se la lunghezza dell'array dell'utente è maggiore di 0 e quindi ne ha azzeccato almento 1
+        if (wroteNumbers.length > 0){
+          resultEL.innerHTML = "Hai indovinato " + (wroteNumbers.length) + " numeri. Questi numeri sono " + (wroteNumbers) +". I numeri originali erano " + (randomCpu);
+    
+        }  else {
+    
+            resultEL.innerHTML = "Niente, non hai memoria."
+    
+     
         }
-
-    };
-   
-    // se la lunghezza dell'array dell'utente è maggiore di 0 e quindi ne ha azzeccato almento 1
-    if (wroteNumbers.length > 0){
-      resultEL.innerHTML = "Hai indovinato " + (wroteNumbers.length) + " numeri. Questi numeri sono " + (wroteNumbers) +". I numeri originali erano " + (randomCpu);
-
-    }  else {
-
-        resultEL.innerHTML = "Niente, non hai memoria."
-
- 
+    
+    
+        
+    
+    
+    
+    
+    
+    
     }
 
 
-    
-
-
-
-
-
-
-}
+});
 
 
 
