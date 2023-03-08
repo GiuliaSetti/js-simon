@@ -42,7 +42,11 @@
 const randomCpu = document.getElementById("cpu_numbers");
 
 // memorizzo l'elemento HTML bottone per controllare che i numeri dell'utente corrispondano all'array
+const playButton = document.getElementById("play");
 const checkButton = document.getElementById("check_button");
+const replayButton = document.getElementById("reload");
+
+// memorizzo tutti i bottoni
 
 // memorizzo l'array degli input
 const userNumbersArray = [
@@ -53,8 +57,13 @@ const userNumbersArray = [
     document.getElementById("no5")
 ];
 
+
+// memorizzo l'elemento HTML che mostrerà i risultati
 const resultEl = document.getElementById("results");
 
+
+// memorizzo l'elemento HTML che contiene gli input
+const userNumbersArrayContainer = document.getElementById("inputs");
 
 // memorizzo una variabile che indichi il totale di numeri dell'array random
 let maxNumbers = 5;
@@ -65,30 +74,34 @@ const randomCpuArray = createArray(5, 1, 50);
 // test
 console.log(randomCpuArray);
 
-// stampo i numeri casuali in pagina
-randomCpu.innerText = randomCpuArray;
+replayButton.style.display ="none";
+userNumbersArrayContainer.style.display ="none";
 
-// genero un timer
-setTimeout(hide, 2000);
+playButton.addEventListener("click", function(){
 
-checkButton.addEventListener("click", function(){
+    // stampo i numeri casuali in pagina
+    randomCpu.innerText = randomCpuArray;
+    // genero un timer
+    setTimeout(hide, 2000);
+    
+    
+    checkButton.addEventListener("click", function(){
 
-    let guessed = checkArrays(randomCpuArray, userNumbersArray);
-
-    endResult(guessed, resultEl, randomCpuArray);
-
+        checkButton.style.display = "none";
+    
+        let guessed = checkArrays(randomCpuArray, userNumbersArray);
+    
+        endResult(guessed, resultEl, randomCpuArray);
+    
+        replayButton.style.display ="block";
+    
+    });
+    
 });
 
-
-
-
-
-
-
-
-
-// per ora non memorizzo i bottoni (totale 3), tutto fuori dal click
-
+replayButton.addEventListener("click", function(){
+    document.location.reload()
+});
 
 
 // FUNZIONI__________________________________-
@@ -97,6 +110,9 @@ checkButton.addEventListener("click", function(){
 
 function hide(){
     randomCpu.style.display = "none";
+
+    
+    userNumbersArrayContainer.style.display ="block";
 }
 
 // funzione che controlla che le due array siano uguali
@@ -117,6 +133,7 @@ function checkArrays(arrayOne, arrayTwo) {
         console.log("numero giusto");
   
       }
+
       
     }
   
@@ -128,11 +145,19 @@ function checkArrays(arrayOne, arrayTwo) {
 
   function endResult(arrayOne, htmlEl, arrayTwo) {
 
-    // stampare quanti numeri ha indovinato l'utente
-    htmlEl.innerHTML = `
-    Hai indovinato ${arrayOne.length} numeri.<br>
-    I numeri che hai indovinato sono: ${arrayOne}.
-    <br> I numeri di partenza: ${arrayTwo}`;
+  
+
+    if (arrayOne.length == 0){
+        htmlEl.innerHTML = "Hai una pessima memoria."
+    } else {
+
+          // stampare quanti numeri ha indovinato l'utente
+        htmlEl.innerHTML = `
+        Hai indovinato ${arrayOne.length} numeri.<br>
+        I numeri che hai indovinato sono: ${arrayOne}.
+        <br> I numeri di partenza: ${arrayTwo}`;
+
+    }
   
   
   }
