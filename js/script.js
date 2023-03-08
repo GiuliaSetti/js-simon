@@ -40,7 +40,7 @@
 // memorizzo il pulsante
 const playButton = document.getElementById("play");
 
-// const reloadButton = document.getElementById("reload");
+const reloadButton = document.getElementById("reload");
 
 // memorizzo l'elemento HTML dove stamperò i numeri random
 const toGuess = document.getElementById("random_numbers");
@@ -52,7 +52,7 @@ const maxNum = 5;
 const toGuessContainer = document.getElementById("random_numbers_container");
 
 
-// reloadButton.style.display = "none";
+reloadButton.style.display = "none";
 
 
 
@@ -72,7 +72,7 @@ playButton.addEventListener("click", function(){
 
 
     // creo una variabile countdown
-    SetTimeout(hide, 5000);
+    setTimeout(hide, 5000);
     
     
     // memorizzo una variabile per il risultato
@@ -92,7 +92,42 @@ playButton.addEventListener("click", function(){
     
         const wroteNumbers = [];
     
-        
+        for(let i = 1; i <= 5; i++){
+    
+            // genero il prompr dove l'utente scrive i numeri in progressione
+            const singleNumber = Number(prompt("Inserisci il " + [i] + "° numero"));
+    
+    
+            // se il numero scritto è presente nell'array dei random E non è incluso nell'array dei numeri utente
+    
+            if(randomCpu.includes(singleNumber) && !wroteNumbers.includes(singleNumber)){
+                wroteNumbers.push(singleNumber);
+            }
+    
+        };
+       
+        // se la lunghezza dell'array dell'utente è maggiore di 0 e quindi ne ha azzeccato almento 1
+        if (wroteNumbers.length > 0){
+          resultEL.innerHTML = "Hai indovinato " + (wroteNumbers.length) + " numeri. Questi numeri sono " + (wroteNumbers) +". I numeri originali erano " + (randomCpu);
+
+          
+         reloadButton.style.display = "block";
+
+
+          
+    
+        }  else {
+    
+            resultEL.innerHTML = "Niente, non hai memoria."
+
+            
+            reloadButton.style.display = "block";
+
+
+
+    
+     
+        }
     
   
     }
@@ -100,9 +135,13 @@ playButton.addEventListener("click", function(){
 
 });
 
-// reloadButton.addEventListener("click", function(){
-//     document.location.reload();
-// });
+reloadButton.addEventListener("click", function(){
+    document.location.reload();
+});
+
+    
+        
+    
 
 
 
