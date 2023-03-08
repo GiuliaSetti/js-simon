@@ -46,6 +46,10 @@ const playButton = document.getElementById("play");
 const checkButton = document.getElementById("check_button");
 const replayButton = document.getElementById("reload");
 
+
+// memorizzo il paragrafo e il tocca a te
+const yourTurnEl = document.getElementById("your_turn");
+
 // memorizzo tutti i bottoni
 
 // memorizzo l'array degli input
@@ -79,10 +83,20 @@ userNumbersArrayContainer.style.display ="none";
 
 playButton.addEventListener("click", function(){
 
+    playButton.style.display ="none";
+
     // stampo i numeri casuali in pagina
-    randomCpu.innerText = randomCpuArray;
+    for(let i = 0; i < randomCpuArray.length; i++) {
+
+        let numberDisplay = document.createElement("span");
+        numberDisplay.innerHTML = randomCpuArray[i];
+        numberDisplay.classList.add("card");
+        randomCpu.append(numberDisplay);
+
+    }
+
     // genero un timer
-    setTimeout(hide, 2000);
+    setTimeout(hide, 10000);
     
     
     checkButton.addEventListener("click", function(){
@@ -113,6 +127,7 @@ function hide(){
 
     
     userNumbersArrayContainer.style.display ="block";
+    yourTurnEl.style.display ="block";
 }
 
 // funzione che controlla che le due array siano uguali

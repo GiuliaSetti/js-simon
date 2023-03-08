@@ -1,3 +1,5 @@
+/* generali */
+
 *{
     margin: 0;
     padding: 0;
@@ -8,3 +10,110 @@
 .debug *{
     font-family: 'Montserrat', sans-serif;
 }
+
+
+button{
+    padding: 10px 30px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    font-size: 20px;
+}
+
+/* container principale _________________*/
+
+.container{
+    max-width: 1200px;
+    margin: 2rem auto;
+
+    background-color: #15616D;
+    padding: 5rem 2rem;
+
+    border-radius: 30px;
+
+    font-size: 20px;
+    
+    color: #FFECD1;
+    
+}
+
+
+.container h1,
+.container p,
+.container h2,
+.container #cpu_numbers{
+    padding-bottom: 2rem;
+}
+
+
+/* numeri cpu______________________ */
+#cpu_numbers{
+ 
+    font-weight: bold;
+    text-align: center;
+
+    font-size: 40px;
+
+    padding: 2rem 0;
+    color: #001524;
+
+}
+
+/* card numeri random */
+.card{
+    padding: 1rem;
+   
+    padding: 2rem;
+}
+
+/* contenitore inputs */
+#inputs_container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+input{
+    border: none;
+    padding: 10px 8px;
+    border-radius: 30px;
+
+    background-color: rgba(255, 255, 255, 0.317);
+    color: white;
+    font-weight: bold;
+}
+
+
+#inputs_container,
+#results{
+    padding: 2rem 0;
+}
+
+#results{
+    text-align: center;
+}
+
+
+
+/* stilizzazione bottoni */
+#play{
+    background-color: #FF7D00;
+}
+
+#check_button{
+    background-color: #FFECD1;
+    color: #001524;
+}
+
+#reload{
+    background-color: #001524;
+}
+
+
+.centered{
+    display: flex;
+    justify-content: center;
+}
+

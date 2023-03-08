@@ -19,13 +19,17 @@
         <div class="container">
 
             <h1>Simon Says:</h1>
-            <p>Una volta cliccato PLAY, avrai 10 secondi per memorizzare i 5 numeri.
+            <p id="paragraph">Una volta cliccato <b>PLAY</b>, avrai 10 secondi per memorizzare i 5 numeri.
             Al termine dei 10 secondi i numeri scompareranno e tu dovrai testare la tua memoria!
             </p>
 
-            <h2>Tocca a te!</h2>
+            <h2 id="your_turn" style="display: none">Tocca a te!</h2>
 
-            <button id="play">Play</button>
+            <div class="centered">
+                
+                <button id="play">Play</button>
+            </div>
+
 
             <div id="cpu_numbers">
 
@@ -41,15 +45,24 @@
                     <input type="number" id="no5">
 
                 </div>
+                <div class="centered">
+                    <button id="check_button">
+                        Check
+                    </button>
 
-                <button id="check_button">
-                    Check
-                </button>
+                </div>
             </div>
+            <div class="results_container">
+                
+                <div id="results"></div>
 
-            <div id="results"></div>
+                <div class="centered">
+                    
+                    <button id="reload">Replay</button>
 
-            <button id="reload">Replay</button>
+                </div>
+                
+            </div>
 
         </div>
 
