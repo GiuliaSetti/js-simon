@@ -50,6 +50,16 @@ const randomCpuArray = createArray(5, 1, 50);
 // test
 console.log(randomCpuArray);
 
+// stampo i numeri casuali in pagina
+randomCpu.innerText = randomCpuArray;
+
+// genero un timer
+setTimeout(hide, 2000);
+
+
+
+
+
 
 
 
@@ -58,6 +68,12 @@ console.log(randomCpuArray);
 
 
 
+// FUNZIONI__________________________________-
+
+// funzione che nasconde i numeri random
+function hide(){
+    randomCpu.style.display = "none";
+}
 
 
 // genero la funzione che mi crea un array di numeri casuali
