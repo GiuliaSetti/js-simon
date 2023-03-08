@@ -41,6 +41,21 @@
 // memorizzo l'elemento HTML dove stampare i numeri random
 const randomCpu = document.getElementById("cpu_numbers");
 
+// memorizzo l'elemento HTML bottone per controllare che i numeri dell'utente corrispondano all'array
+const checkButton = document.getElementById("check_button");
+
+// memorizzo l'array degli input
+const userNumbersArray = [
+    document.getElementById("no1"),
+    document.getElementById("no2"),
+    document.getElementById("no3"),
+    document.getElementById("no4"),
+    document.getElementById("no5")
+];
+
+const resultEl = document.getElementById("results");
+
+
 // memorizzo una variabile che indichi il totale di numeri dell'array random
 let maxNumbers = 5;
 
@@ -55,6 +70,14 @@ randomCpu.innerText = randomCpuArray;
 
 // genero un timer
 setTimeout(hide, 2000);
+
+checkButton.addEventListener("click", function(){
+
+    let guessed = checkArrays(randomCpuArray, userNumbersArray);
+
+    endResult(guessed, resultEl, randomCpuArray);
+
+});
 
 
 
@@ -71,9 +94,49 @@ setTimeout(hide, 2000);
 // FUNZIONI__________________________________-
 
 // funzione che nasconde i numeri random
+
 function hide(){
     randomCpu.style.display = "none";
 }
+
+// funzione che controlla che le due array siano uguali
+function checkArrays(arrayOne, arrayTwo) {
+  
+    const guessed = [];
+  
+    // primo approccio: cascata di if
+  
+    for(let i = 0; i < arrayTwo.length; i++) {
+  
+      if(arrayOne[i] == arrayTwo[i].value) {
+        
+        guessed.push(arrayOne[i]);
+  
+        
+  
+        console.log("numero giusto");
+  
+      }
+      
+    }
+  
+    return guessed;
+  
+  }
+
+//   genero la funzione che mi indichi il risultato
+
+  function endResult(arrayOne, htmlEl, arrayTwo) {
+
+    // stampare quanti numeri ha indovinato l'utente
+    htmlEl.innerHTML = `
+    Hai indovinato ${arrayOne.length} numeri.<br>
+    I numeri che hai indovinato sono: ${arrayOne}.
+    <br> I numeri di partenza: ${arrayTwo}`;
+  
+  
+  }
+
 
 
 // genero la funzione che mi crea un array di numeri casuali
